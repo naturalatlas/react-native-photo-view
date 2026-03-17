@@ -21,7 +21,6 @@ import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.common.SystemClock;
 import com.facebook.react.modules.fresco.ReactNetworkImageRequest;
 import com.facebook.react.uimanager.UIManagerModule;
 import com.facebook.react.uimanager.events.EventDispatcher;
@@ -36,13 +35,16 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.egl.EGLContext;
 import javax.microedition.khronos.egl.EGLDisplay;
 
-import static com.facebook.react.views.image.ReactImageView.REMOTE_IMAGE_FADE_DURATION_MS;
+// Default remote image fade duration (matches ReactImageView.REMOTE_IMAGE_FADE_DURATION_MS)
+
 
 /**
  * @author alwx (https://github.com/alwx)
  * @version 1.0
  */
 public class PhotoView extends PhotoDraweeView {
+    private static final int REMOTE_IMAGE_FADE_DURATION_MS = 300;
+
     private Uri mUri;
     private ReadableMap mHeaders;
     private boolean mIsDirty;
